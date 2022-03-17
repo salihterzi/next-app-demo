@@ -1,6 +1,12 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
-}
-
-module.exports = nextConfig
+module.exports = {
+  target: "serverless",
+  async rewrites() {
+    return [
+      // Rewrite everything to `pages/index`
+      {
+        source: "/:any*",
+        destination: "/",
+      },
+    ];
+  },
+};
